@@ -3,6 +3,8 @@ import './App.css';
 
 let text = 'test variable';
 
+
+
 const style = {
   fontSize: '24px',
   fontStyle : 'italic',
