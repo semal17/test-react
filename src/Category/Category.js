@@ -1,19 +1,19 @@
 import CategoryDescription from '../CategoryDescription/CategoryDescription';
-// import {useLocation} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
-function Category() {
-    // let url = useLocation();
-    // console.log(url);
+function Category(props) {
+    const itemList = props.data.nav.map(item => <li><Link key={item.text} to={item.link}>{item.text}</Link></li>);
+    
     return (
         <>
-        <h1>Category</h1>
+            <h1>Category</h1>
             <CategoryDescription />
-            <a href="/cat">Назад</a>
-            <ul>
-                <li><a href="/cat/notebook">Ноутбуки</a></li>
-                <li><a href="/cat/monitor">Мониторы</a></li>
-                <li><a href="/cat/cellphone">Мобильные телефоны</a></li>
+            <Link to="/cat">Назад</Link>
+            <ul>            
+                {itemList}
             </ul>
+
+
         </>
     );
 }

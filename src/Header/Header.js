@@ -1,10 +1,11 @@
-function Header() {
+import {Link} from 'react-router-dom';
+
+function Header(props) {
+    const itemList = props.data.nav.map(item => <li><Link key={item.text} to={item.link}>{item.text}</Link></li>);
     return (
         <nav>
             <ul>
-                <li><a href="/">Главная</a></li>
-                <li><a href="/about">О сайте</a></li>
-                <li><a href="/cat">Категории</a></li>
+                {itemList}                
             </ul>
         </nav>
     );
