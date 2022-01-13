@@ -1,27 +1,33 @@
 import Header from './Header/Header';
-import Main from './Main/Main';
-import Sidebar from './Main/Sidebar';
 import Footer from './Footer/Footer';
+import Category from './Category/Category';
+import Home from './Home/Home';
+import About from './About/About';
+import CategoryDescription from './CategoryDescription/CategoryDescription';
+import Error from './Error/Error';
 import './App.css';
 
-const site = {
-	site_name : "react test",
-	site_title : "my first site with react",
-	nav : [
-    { "link": "nav1", "text": "my link" },
-    { "link": "nav2", "text": "my link 2" },
-    { "link": "nav3", "text": "my link 3" },
-  ]
-}
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-function App() { 
+
+
+function App() {
   return (
-  <>
-  <Header data={site}/>
-  <Main />
-  <Sidebar />
-  <Footer data={site}/>
-  </>
+    <>
+      <Header />
+      <Router>
+
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route exact path="/cat" element={<Category />} />
+          <Route exact path="/cat/:catName" element={<CategoryDescription />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+
+      </Router>
+      <Footer />
+    </>
   );
 }
 

@@ -1,13 +1,12 @@
-import Nav from './Nav';
-
-
-function Header(props) {
+function Header() {
     return (
-        <header>
-            <h1>{props.data.site_name}</h1>
-            <h2>{props.data.site_title}</h2>
-    <Nav nav={props.data.nav}/>
-        </header>
+        <nav>
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/about">О сайте</a></li>
+                <li><a href="/cat">Категории</a></li>
+            </ul>
+        </nav>
     );
 }
 

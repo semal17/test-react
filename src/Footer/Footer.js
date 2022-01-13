@@ -1,7 +1,7 @@
-function Footer(props) {
+function Footer() {
     return (
         <footer>
-            <h3>{props.data.site_name}</h3>	
+           Footer 
         </footer>
     );
 }
