@@ -30,8 +30,9 @@ function App() {
   }
 
   let innerSel = React.createRef();
+  const [fig, setFig] = useState('');
   function task6() {
-    document.querySelector(".out-6").innerHTML = innerSel.current.value;
+    setFig(innerSel.current.value)
   }
 
   function task7() {
@@ -42,16 +43,14 @@ function App() {
 
   }
 
-  let val = React.createRef();
-  let out = '';
-  function task8() {
-    console.log(val);
-    if (typeof (val.current.value) == "number") {
-      out += '1';
+  
+  const [count, setCount] = useState('');
+  function task8(event) {        
+    if (!isNaN(+event.key)) {
+      setCount(count +  "1");      
     } else {
-      out += '0';
+      setCount(count + "0");      
     }
-    document.querySelector('.out-8').innerHTML = out;
   }
 
 
@@ -99,7 +98,7 @@ function App() {
           <option value="9">nine</option>
           <option value="10">ten</option>
         </select>
-        <div class="out-6"></div>
+        <div class="out-6">{fig}</div>
 
       </section>
       <section>
@@ -109,8 +108,8 @@ function App() {
       </section>
       <section>
         <h2>Task 8</h2>
-        <input ref={val} onKeyPress={task8} type="text" className="task-8"></input>
-        <div className="out-8"></div>
+        <input onKeyPress={task8} type="text" className="task-8"></input>
+        <div className="out-8">{count}</div>
       </section>
       <section>
         <h2>Task 9</h2>
