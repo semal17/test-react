@@ -1,18 +1,32 @@
 #root {
+  padding-top: 30px;
+  
+}
+.container {
   max-width: 1200px;
-  padding: 40px;
   margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
   background: #f1f1f1;
 }
 
-.italic {
-  font-style: italic;
+.goods-field::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
-.text-orange {
-	color: orange;
+.goods-block {
+  width: 30%;
+  margin: 1%;
+  padding: 10px;
+  border: 1px solid black;
+  float: left;
+  text-align: center;
 }
 
-.text-grey {
-	color: #c0c0c0;
+.goods-block img {
+  max-width: 80%;
+  display: block;
+  margin: 20px auto;
 }

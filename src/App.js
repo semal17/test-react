@@ -1,38 +1,42 @@
 import './App.css';
 import React, { useState } from 'react';
-
+import goodsArr from './goods.json';
+import Goods from './Goods';
+import Cart from './Cart';
 
 function App() {
-  const h1 = React.createElement('h1', {}, 'unit08');
-  const h2 = React.createElement('h2', { 'className': 'text-orange' }, 'header 2');
-  const p = React.createElement('p', { 'style': { 'color': 'red' } }, 'this is p');
-  const input = React.createElement('input', { 'value': '55' });
-  const p1 = React.createElement('p', {}, 'hi');
-  const p2 = React.createElement('p', {}, 'world');
-  const div = React.createElement('div', { 'className': 'text-grey' }, p1, p2);
+  const [cart, setCart] = useState({});
+  const [count, setCount] = useState(0);
 
+  let addToCart = (event) => {
+    if (!event.target.classList.contains('add-to-cart')) return false;
+    let cartTemp = cart;
+    cartTemp[event.target.dataset.key] ? cartTemp[event.target.dataset.key]++ : cartTemp[event.target.dataset.key] = 1;
+    setCart(cartTemp);
+    let countAdd = count;
+    countAdd++;
+    setCount(countAdd);
+  }
 
-  let rin = React.createRef();
-  const [li, setLi] = useState();
-  let checkIn = () => {
-    if (rin.current.value !== '') {
-      setLi(React.createElement('li', {}, rin.current.value));
-    }
-  };
+  let showCart;
+  if (count !== 0) {
+    showCart = <Cart cart={cart} goods={goodsArr} />;
+  }
+  else {
+    showCart = 'Empty';
+  }
+
 
 
   return (
-    <>
-      {h1}
-      {h2}
-      {p}
-      {div}
-      {input}
-      <input ref={rin}></input>
-      <button onClick={checkIn}>Button</button>
-      <ul>{li}</ul>
-    </>
-  )
+    <div className="container">
+      <h1>Cart</h1>
+      <div className="goods-field" onClick={addToCart}>
+        {goodsArr.map(item => <Goods title={item.title} cost={item.cost} image={item.image} articul={item.articul} key={item.articul} />)}
+        {showCart}
+      </div>
+    </div>
+  );
 }
 
 
